@@ -49,7 +49,6 @@ export default function TechStackBadges() {
             {techStack.map((tech) => (
                 <Badge
                     key={tech.name}
-                    size="lg"
                     variant="outline"
                     className={`flex items-center gap-2 border px-2 text-sm font-semibold font-mono transition  rounded-md
             ${theme === "dark" ? "border-cyan-400 text-cyan-300 hover:bg-cyan-400/10" : "border-gray-800 text-gray-600 hover:text-green-700 hover:bg-green-400/20 "}`}

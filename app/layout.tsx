@@ -1,11 +1,8 @@
-// import type { Metadata } from "next";
-"use client";
+ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import LenisProvider from "@/components/LenisProvider";
-import MatrixLoader from "./CyberPunk/components/MatrixLoader";
-import { useEffect, useState } from "react";
+import ClientRoot from "./ClientRoot";
+
 
 
 
@@ -19,6 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "Your Portfolio",
+  description: "Mahendra Singh – Frontend Developer Portfolio",
+};
 
 
 export default function RootLayout({
@@ -28,13 +29,9 @@ export default function RootLayout({
 }>) {
 
 
-  const [loading, setLoading] = useState(true);
+ 
 
-  useEffect(() => {
-    // Simulate system boot delay (2.5 seconds)
-    const timer = setTimeout(() => setLoading(false), 2500);
-    return () => clearTimeout(timer);
-  }, []);
+ 
   return (
     <html lang="en" suppressHydrationWarning>
       <link rel="preload" as="audio" href="/sounds/hover.wav" type="audio/wav" />
@@ -42,27 +39,9 @@ export default function RootLayout({
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {loading ? (
-            <MatrixLoader />
-          ) : (
-
-            <LenisProvider>
-              <main className="relative z-10">
-                {children}
-              </main>
-
-            </LenisProvider>
-          )}
-
-
-        </ThemeProvider>
+        <ClientRoot>{children}</ClientRoot>
       </body>
     </html>
   );

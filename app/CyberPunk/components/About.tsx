@@ -11,11 +11,11 @@ export default function About() {
             className: "col-span-3 md:col-span-2 bg-black rounded-none p-0 overflow-hidden border-2  border-dashed border-gray-600",
         },
         {
-            header: <SkillsItem skill="Skills" level="Advanced" />,
+            header: <SkillsItem skill="Skills" />,
             className: "col-span-3 md:col-span-1 bg-black row-span-2 p-0 overflow-hidden rounded-none border-2  border-dashed border-gray-600",
         },
         {
-            header: <EducationItem skill="Education" level="Advanced" />,
+            header: <EducationItem skill="Education"/>,
             className: "col-span-3 md:col-span-1 row-span-1 p-0 bg-black overflow-hidden rounded-none border-2  border-dashed border-gray-600",
         },
         {
@@ -65,11 +65,11 @@ const AboutText = () => {
     );
 }
 // /* Education */
-const EducationItem = ({ skill, level }: { skill: string; level: string }) => {
+const EducationItem = ({ skill }: { skill: string; }) => {
     return (
         <Card className="bg-black max-w-md border-0">
             <CardHeader>
-                <CardTitle className="text-white text-xl font-extrabold bg-green-700 px-3 py-1 inline-block">Education</CardTitle>
+                <CardTitle className="text-white text-xl font-extrabold bg-green-700 px-3 py-1 inline-block">{skill}</CardTitle>
             </CardHeader>
             <CardContent>
                 <ul className="">
@@ -112,7 +112,7 @@ const ExperienceItem = ({ tool, icon }: { tool: string; icon: React.ReactNode })
     return (
         <Card className="bg-black max-w-md border-0">
             <CardHeader>
-                <CardTitle className="text-white text-xl font-extrabold bg-green-700 px-3 py-1 inline-block">Experience</CardTitle>
+                <CardTitle className="text-white text-xl font-extrabold bg-green-700 px-3 py-1 inline-block">{tool}</CardTitle>
             </CardHeader>
             <CardContent>
                 <ul className="">
@@ -149,12 +149,12 @@ const ExperienceItem = ({ tool, icon }: { tool: string; icon: React.ReactNode })
     );
 }
 {/* Skills */ }
-const SkillsItem = ({ tool, icon }: { tool: string; icon: React.ReactNode }) => {
+const SkillsItem = ({ skill, }: { skill: string, }) => {
     return (
 
         <Card className="bg-black max-w-md border-0">
             <CardHeader>
-                <CardTitle className="text-white text-xl font-extrabold bg-green-700 px-3 py-1 inline-block">Skills</CardTitle>
+                <CardTitle className="text-white text-xl font-extrabold bg-green-700 px-3 py-1 inline-block">{skill}</CardTitle>
             </CardHeader>
             <CardContent className="h-[270px] relative">
                 <SkillRadar />

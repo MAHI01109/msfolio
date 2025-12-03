@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { flushSync } from "react-dom"
-
 import { cn } from "@/lib/utils"
 
 interface AnimatedThemeTogglerProps
@@ -24,7 +23,17 @@ export const AnimatedThemeToggler = ({
       setIsDark(document.documentElement.classList.contains("dark"))
     }
 
-    updateTheme()
+    // ✅ Default dark theme logic
+    const storedTheme = localStorage.getItem("theme")
+
+    if (!storedTheme) {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem("theme", "dark")
+      setIsDark(true)
+    } else {
+      document.documentElement.classList.toggle("dark", storedTheme === "dark")
+      setIsDark(storedTheme === "dark")
+    }
 
     const observer = new MutationObserver(updateTheme)
     observer.observe(document.documentElement, {

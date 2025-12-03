@@ -1,23 +1,17 @@
-// components/LenisProvider.js
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Lenis from 'lenis';
+import { useEffect, PropsWithChildren } from "react";
+import Lenis from "lenis";
 
-export default function LenisProvider({ children }) {
+export default function LenisProvider({ children }: PropsWithChildren) {
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Example easing function
-      direction: 'vertical',
-      gestureDirection: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      // Add other Lenis options as needed
+      smoothTouch: false,
     });
 
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
@@ -25,9 +19,9 @@ export default function LenisProvider({ children }) {
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy(); // Clean up Lenis instance on unmount
+      lenis.destroy();
     };
   }, []);
 
-  return children;
+  return <>{children}</>;
 }

@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Contact() {
   return (
-    <section className="relative bg-black text-green-400 px-6 md:px-20 py-24 overflow-hidden">
+    <section className="relative bg-black text-green-400 px-6  md:px-20 py-24 overflow-hidden">
       {/* Subtle cyber grid background */}
       {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#001100_1%,#000000_70%)] opacity-90" /> */}
       <motion.div
@@ -20,7 +20,7 @@ export default function Contact() {
       />
 
       {/* Title */}
-      <div className="relative z-20 text- mb-16">
+      <div className="relative z-20  mb-16">
         <h2
           className="text-3xl md:text-5xl font-mono text-[#00ff88] tracking-widest mb-2 glitch"
           data-text="CONTACT SYSTEM"
@@ -33,7 +33,7 @@ export default function Contact() {
       </div>
 
       {/* Responsive grid layout */}
-      <div className="relative bg-black z-20 grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-center  p-6">
+      <div className="relative bg-black z-20 grid grid-cols-1 md:grid-cols-3 gap-4 items-center justify-center md:p-6">
         {/* Globe */}
         <div className="col-span-1 flex items-center justify-center  bg-black ">
           <GlobeDemo />
@@ -66,7 +66,7 @@ export const RevealBento = () => {
         transition={{
           staggerChildren: 0.05,
         }}
-        className="font-mono text-green-700 mx-auto  grid max-w-5xl grid-flow-dense grid-cols-12 gap-4 p-6"
+        className="font-mono text-green-700 mx-auto  grid max-w-5xl grid-flow-dense grid-cols-12 gap-4 p-2 md:p-6"
       >
         <HeaderBlock />
         <SocialsBlock />

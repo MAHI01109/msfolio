@@ -87,7 +87,7 @@ export default function Projects() {
                     className="col-span-4 md:col-span-2 bg-black border-none "
                     header={
                       <Image
-                        src="/Web.jpg"
+                        src="/web.jpg"
                         width={600}
                         height={100}
                         className="object-cover w-full h-full"

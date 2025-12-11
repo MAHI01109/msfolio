@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { WarpBackground } from "@/components/ui/warp-background";
 import { useTheme } from "next-themes";
 import ProfileCardMini from "./ProfileCardMini";
+import { useUIAudio } from "@/hooks/useUIAudio";
 
 export default function Hero() {
+    const { playHover, playClick } = useUIAudio();
     const { theme } = useTheme();
     const gridColor =
         theme === "light"
@@ -52,10 +54,16 @@ export default function Hero() {
                     </p>
 
                     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                        <button className="w-full sm:w-auto border border-green-400 px-5 py-3 text-green-300 font-mono hover:bg-green-400/10 transition rounded-md">
+                        <button
+                            onMouseEnter={playHover}
+                            onClick={playClick}
+                            className="w-full sm:w-auto border border-green-400 px-5 py-3 text-green-300 font-mono hover:bg-green-400/10 transition rounded-md">
                             View Loadout
                         </button>
-                        <button className="w-full sm:w-auto border border-dashed border-lime-600 px-5 py-3 text-lime-400 font-mono hover:bg-lime-500/10 transition rounded-md">
+                        <button
+                            onMouseEnter={playHover}
+                            onClick={playClick}
+                            className="w-full sm:w-auto border border-dashed border-lime-600 px-5 py-3 text-lime-400 font-mono hover:bg-lime-500/10 transition rounded-md">
                             Start Mission
                         </button>
                     </div>

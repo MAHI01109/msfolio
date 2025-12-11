@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import { FiMail } from "react-icons/fi";
 import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
 import Link from "next/link";
+import { useUIAudio } from "@/hooks/useUIAudio";
 
 export default function ProfileCardMini() {
+  const {playClick,playHover}=useUIAudio();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -34,19 +36,26 @@ export default function ProfileCardMini() {
       {/* Email */}
       <div className="mt-3 flex items-center justify-center gap-2 text-sm font-mono text-green-300/80">
         <FiMail className="text-green-400" />
-        <a
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
           href="mailto:mahendrasinghddnuk@gmail.com"
+          onMouseEnter={playHover}
+          onClick={playClick}
           className="hover:text-green-200 transition"
         >
           mahendrasinghddnuk@gmail.com
-        </a>
+        </Link>
       </div>
 
       {/* Social Icons */}
       <div className="flex justify-center gap-6 mt-5">
         <Link
           href="https://github.com/MAHI01109"
+          onMouseEnter={playHover}
+          onClick={playClick}
           target="_blank"
+          rel="noopener noreferrer"
           className="text-green-400 hover:text-green-200 transition transform hover:scale-110"
         >
           <SiGithub size={22} />
@@ -54,6 +63,9 @@ export default function ProfileCardMini() {
         <Link
           href="https://www.linkedin.com/in/mahendra-singh-8041a426a/"
           target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={playHover}
+          onClick={playClick}
           className="text-green-400 hover:text-green-200 transition transform hover:scale-110"
         >
           <SiLinkedin size={22} />
@@ -61,6 +73,9 @@ export default function ProfileCardMini() {
         <Link
           href="https://www.instagram.com/__011_danu/"
           target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={playHover}
+          onClick={playClick}
           className="text-green-400 hover:text-green-200 transition transform hover:scale-110"
         >
           <SiInstagram size={22} />

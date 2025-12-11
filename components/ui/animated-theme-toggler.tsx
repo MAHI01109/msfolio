@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { flushSync } from "react-dom"
 import { cn } from "@/lib/utils"
+import { useUIAudio } from "@/hooks/useUIAudio"
 
 interface AnimatedThemeTogglerProps
   extends React.ComponentPropsWithoutRef<"button"> {
@@ -17,6 +18,7 @@ export const AnimatedThemeToggler = ({
 }: AnimatedThemeTogglerProps) => {
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
+  const {playClick,playHover}=useUIAudio();
 
   useEffect(() => {
     const updateTheme = () => {
@@ -83,6 +85,7 @@ export const AnimatedThemeToggler = ({
   return (
     <button
       ref={buttonRef}
+      onMouseDown={playHover}
       onClick={toggleTheme}
       className={cn(className)}
       {...props}

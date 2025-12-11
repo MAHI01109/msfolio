@@ -6,13 +6,13 @@ export function useUIAudio() {
   const [unlocked, setUnlocked] = useState(false);
 
   const [playHover] = useSound("/sounds/hover.wav", {
-    volume: 0.6,
+    volume: 0.2,
     interrupt: true,
     preload: true,
   });
 
   const [playClick] = useSound("/sounds/click.wav", {
-    volume: 0.8,
+    volume: 0.3,
     interrupt: true,
     preload: true,
   });

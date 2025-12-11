@@ -87,10 +87,10 @@ export default function Projects() {
                     className="col-span-4 md:col-span-2 bg-black border-none "
                     header={
                       <Image
-                        src="/web.jpg"
+                        src="/images/projects/gym/gym-pic-1.png"
                         width={600}
                         height={100}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-full h-full border-2  hover:border-zinc-600"
                         alt=""
                       />
                     }
@@ -98,10 +98,10 @@ export default function Projects() {
                   <BentoGridItem
                     header={
                       <Image
-                        src="/phone.jpg"
+                        src="/images/projects/gym/gym-pic-2.png"
                         width={600}
                         height={100}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-full h-full hover:border-zinc-600 border-2"
                         alt=""
                       />
                     }

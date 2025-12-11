@@ -127,7 +127,9 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-4">
-            <AnimatedThemeToggler />
+            <AnimatedThemeToggler
+            
+             />
           </div>
         </motion.div>
       )}

@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function BlogSection() {
   const { theme } = useTheme();
-
+  const [posts, setPosts] = useState([]);
   const blogs = [
     {
       title: "Building Futuristic UI with Next.js & Tailwind",
@@ -35,12 +36,26 @@ export default function BlogSection() {
     },
   ];
 
+   useEffect(() => {
+    fetch("https://dev.to/api/articles?username=mahendra_singh_7500")
+      .then((res) => res.json())
+      .then(
+        (data) => {
+          console.log(data);
+          setPosts(data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }, []);
+
   const borderColor = "border-gray-600";
 
   return (
     <section className="relative bg-black border border-b-green-700 text-green-400 py-24 px-8 md:px-20 overflow-hidden">
       {/* Terminal scanlines overlay */}
-      
+
       <div className="absolute inset-0 pointer-events-none bg-[repeating-linear-gradient(to_bottom,rgba(0,255,0,0.05)_0px,rgba(0,255,0,0.05)_1px,transparent_2px)] opacity-30"></div>
 
       <div className="relative z-20 mb-16">
@@ -57,11 +72,13 @@ export default function BlogSection() {
           [ SYSTEM ONLINE :: Recent Uploads ]
         </p>
       </div>
+      
+
 
       <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 relative z-10">
-        {blogs.map((blog, i) => (
+        {posts.map((post: any, i) => (
           <motion.div
-            key={blog.slug}
+            key={post.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
@@ -70,8 +87,8 @@ export default function BlogSection() {
           >
             <div className="relative w-full h-48 overflow-hidden rounded-none border border-green-700">
               <Image
-                src={blog.image}
-                alt={blog.title}
+                src={post.cover_image}
+                alt={post.title}
                 fill
                 className="object-cover hover:scale-110 transition duration-700"
               />
@@ -79,28 +96,28 @@ export default function BlogSection() {
 
             <div className="mt-5 space-y-3 font-mono">
               <h3 className="text-xl font-bold text-orange-700 hover:text-green-300 transition">
-                {blog.title}
+                {post.title}
               </h3>
               <p className="text-green-300/80 text-sm leading-relaxed">
-                {blog.description}
+                {post.description}
               </p>
 
               <div className="flex flex-wrap gap-2 mt-3">
-                {blog.tags.map((tag) => (
+                {post.tag_list.map((tag: string) => (
                   <span
                     key={tag}
                     className="text-xs border border-green-400/40 px-2 py-1 rounded-md text-green-300 bg-green-500/10"
                   >
-                    #{tag}
+                    # {tag}
                   </span>
                 ))}
               </div>
 
               <Link
-                href={`/blog/${blog.slug}`}
+                href={post.url}
                 className="block mt-5 w-fit text-sm border border-green-400 px-4 py-2 rounded-md hover:bg-green-400/20 transition"
               >
-                Read More →
+                Read More &rarr;
               </Link>
             </div>
           </motion.div>

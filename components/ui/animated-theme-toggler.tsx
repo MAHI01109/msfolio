@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 import { flushSync } from "react-dom"
+
 import { cn } from "@/lib/utils"
 import { useUIAudio } from "@/hooks/useUIAudio"
 
@@ -18,24 +19,14 @@ export const AnimatedThemeToggler = ({
 }: AnimatedThemeTogglerProps) => {
   const [isDark, setIsDark] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
-  const {playClick,playHover}=useUIAudio();
+  const {playHover}= useUIAudio();
 
   useEffect(() => {
     const updateTheme = () => {
       setIsDark(document.documentElement.classList.contains("dark"))
     }
 
-    // ✅ Default dark theme logic
-    const storedTheme = localStorage.getItem("theme")
-
-    if (!storedTheme) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("theme", "dark")
-      setIsDark(true)
-    } else {
-      document.documentElement.classList.toggle("dark", storedTheme === "dark")
-      setIsDark(storedTheme === "dark")
-    }
+    updateTheme()
 
     const observer = new MutationObserver(updateTheme)
     observer.observe(document.documentElement, {
@@ -85,7 +76,7 @@ export const AnimatedThemeToggler = ({
   return (
     <button
       ref={buttonRef}
-      onMouseDown={playHover}
+      onMouseOver={playHover}
       onClick={toggleTheme}
       className={cn(className)}
       {...props}

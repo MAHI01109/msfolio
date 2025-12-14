@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -14,11 +14,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme } = useTheme();
   const pathname = usePathname();
-
-  const borderColor =
-    theme === "light" ? "border-green-700" : "border-green-400";
-  const textColor =
-    theme === "light" ? "text-green-700" : "text-green-400";
+  console.log(theme);
 
   const links = [
     { name: "Home", href: "/" },
@@ -32,16 +28,16 @@ export default function Navbar() {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
-      className={`w-full h-14 border-b-4 ${borderColor} bg-black/90 backdrop-blur-md fixed top-0 left-0 z-50`}
+      className={`w-full h-14 border-b-4  border-black dark:border-green-700 bg-yellow-300 dark:bg-black/90  backdrop-blur-md fixed top-0 left-0 z-50`}
     >
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-6 md:px-16">
         {/* Brand */}
-        <div className={`font-extrabold text-2xl ${textColor} tracking-wider`}>
+        <div className={`font-extrabold text-2xl text-black dark:text-green-400 tracking-wider`}>
           <Link
             href="/"
             onMouseEnter={playHover}
             onClick={playClick}
-            className="font-mono text-green-400 text-2xl hover:text-cyan-400 transition"
+            className="font-mono text-black dark:text-green-400 text-2xl hover:text-cyan-400 transition"
           >
             <span className="animate-pulse">▮</span>[& M$ &]
             <span className="animate-pulse">▮</span>
@@ -61,7 +57,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={playClick}
-                  className={`transition ${textColor} hover:text-cyan-400 ${isActive ? "text-cyan-400" : ""
+                  className={`transition text-black dark:text-green-700 hover:text-orange-500 dark:hover:text-cyan-400 ${isActive ? "text-orange-500 dark:text-cyan-400" : ""
                     }`}
                 >
                   {link.name}
@@ -69,7 +65,7 @@ export default function Navbar() {
 
                 {/* Laser underline effect */}
                 <span
-                  className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-cyan-400 group-hover:w-full transition-all duration-300 ${isActive ? "w-full shadow-[0_0_10px_#00ffff]" : ""
+                  className={`absolute -bottom-1 left-0 w-0 h-[2px] bg-orange-500 dark:bg-cyan-400  group-hover:w-full transition-all duration-300 ${isActive ? "w-full shadow-[0_0_10px_#00ffff]" : ""
                     }`}
                 ></span>
               </div>
@@ -78,7 +74,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Theme Toggler */}
-        <div className="hidden md:flex items-center space-x-2 text-green-400">
+        <div className="hidden md:flex items-center space-x-2 dark:text-green-400 text-black">
           <AnimatedThemeToggler />
         </div>
 
@@ -128,8 +124,8 @@ export default function Navbar() {
           ))}
           <div className="pt-4">
             <AnimatedThemeToggler
-            
-             />
+
+            />
           </div>
         </motion.div>
       )}

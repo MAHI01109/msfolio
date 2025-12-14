@@ -197,3 +197,24 @@ body {
   }
 }
 
+
+@keyframes sweep {
+  0%   { box-shadow: inset 0 0 0 0 rgba(0,255,128,.0); }
+  50%  { box-shadow: inset 0 0 24px 2px rgba(0,255,128,.25); }
+  100% { box-shadow: inset 0 0 0 0 rgba(0,255,128,.0); }
+}
+@keyframes bar {
+  0%   { transform: translateX(0%); width: 28%; }
+  50%  { transform: translateX(60%); width: 40%; }
+  100% { transform: translateX(100%); width: 28%; }
+}
+
+
+/* @keyframes glowSweep {
+  0%   { filter: drop-shadow(0 0 2px #00ff88) drop-shadow(0 0 5px #00ff88); }
+  50%  { filter: drop-shadow(0 0 8px #00ff88) drop-shadow(0 0 12px #00ff88); }
+  100% { filter: drop-shadow(0 0 2px #00ff88) drop-shadow(0 0 5px #00ff88); }
+}
+svg path {
+  animation: glowSweep 3s infinite ease-in-out;
+} */
